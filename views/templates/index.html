@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {{ block "setup" .}}
+  <link rel="stylesheet" href="styles/style.css">
+  <script type="module" src="/dist/bundle.mjs"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+  {{ end }}
+</head>
+
+<body class="flex justify-center overflow-hidden">
+  <main class="bg-white h-screen w-[40vw]">
+    <nav class="w-full h-16 flex items-center justify-evenly">
+      <h1 class="text-3xl font-bold">Time <span class="text-blue-300">Manager</span></h1>
+      <h1 hx-get="/api/time" hx-trigger="load" hx-swap="outerHTML"></h1>
+    </nav>
+
+    <section class="flex flex-col justify-evenly h-full items-center">
+      <div id="timings" hx-get="/api/timings" hx-trigger="load"
+        class="[&>*:nth-child(even)]:bg-gray-200 border-gray-200 border-2 h-96 w-full overflow-y-scroll"></div>
+      {{ template "controls" .}}
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{{ if eq .Type 0}}
+<h1 hx-get="/api/time" class="text-black text-3xl font-bold" hx-trigger="click from:button" >{{ .Time }}</h1>
+{{ else if eq .Type 1}}
+<h1 hx-get="/api/time" class="text-green-500 text-3xl font-bold" hx-trigger="click from:button" >{{ .Time }}</h1>
+{{ else }}
+<h1 hx-get="/api/time" class="text-red-500 text-3xl font-bold" hx-trigger="click from:button" >{{ .Time }}</h1>
+{{ end }}

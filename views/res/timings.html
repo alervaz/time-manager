@@ -1,0 +1,21 @@
+{{ range .Timings}}
+<div class="flex text-xl justify-evenly {{ if eq .Type 1}} text-red-500 {{ else }} text-green-500 {{ end }}">
+
+  {{ if .HasEnded}}
+  <p>{{ .Start.Hour }}h {{ .Start.Minute
+    }}m {{ .Start.Second }}s - {{ .End.Hour}}h {{ .End.Minute}}m {{ .End.Second }}s
+  </p>
+  <span class="font-bold">
+    {{ if eq .Type 1}}
+    -{{ round (.End.Sub .Start) 2 }}
+    {{ else }}
+    +{{ round (.End.Sub .Start) 2 }}
+    {{ end }}
+  </span>
+
+  {{ else }}
+  <p class="{{ if eq .Type 1}} text-red-500 {{ else }} text-green-500 {{ end }} ">{{ .Start.Hour }}h {{ .Start.Minute
+    }}m {{ .Start.Second }}s</p>
+  {{ end }}
+</div>
+{{ end }}

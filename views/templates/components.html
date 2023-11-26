@@ -1,0 +1,15 @@
+{{ block "controls" .}}
+<custom-controls>
+  <button id="clear"
+    class="border-red-500 border-2 px-6 py-1 text-lg text-red-500 rounded-lg hover:bg-red-500 hover:text-white duration-100 ease-in"
+    hx-delete="/api/clear" hx-target="#timings">Clear</button>
+
+  <button id="consume"
+    class="border-blue-500 border-2 px-6 py-1 text-lg text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white duration-100 ease-in disabled:opacity-0"
+    hx-post="/api/consume" hx-swap="beforeend" hx-target="#timings">Consume</button>
+
+  <button id="movement"
+    class="border-green-500 border-2 px-6 py-1 text-lg text-green-500 rounded-lg hover:bg-green-500 hover:text-white duration-100 ease-in disabled:opacity-0"
+    hx-post="/api/movement" hx-swap="beforeend" hx-target="#timings">Movement</button>
+</custom-controls>
+{{ end }}
